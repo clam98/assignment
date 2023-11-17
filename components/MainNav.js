@@ -20,6 +20,8 @@ export default function MainNav(){
         router.push(`/artwork?title=true&q=${searchField}`);
     };
 
+    const toggleNavbar = () => setIsExpanded(!isExpanded);
+
     return(
         <>
         <Navbar expand="lg" className="navbar-dark-fixed-top">
@@ -27,7 +29,7 @@ export default function MainNav(){
                 <Navbar.Brand>Carmen Lam</Navbar.Brand>
                 <Navbar.Toggle aria-controls='basic-navbar-nav'
                     onClick={()=>
-                        setIsExpanded(!isExpanded)}
+                        setIsExpanded(false)}
                         />
                  <Navbar.Collapse id="basic-navbar-nav">
                   <Nav className="me-auto">
@@ -40,7 +42,7 @@ export default function MainNav(){
                         </Nav.Link>
 
                         <Nav.Link href="/search" passHref legacyBehavior
-                            onClick={()=>setIsExpanded(!isExpanded)}
+                            onClick={()=>setIsExpanded(false)}
                             active={router.pathname === "/search"}
                         >
                           Advanced Search
@@ -56,7 +58,7 @@ export default function MainNav(){
                         aria-label="Search"
                         />
                         <Button variant="outline-success" type="submit" 
-                        onClick={()=>setIsExpanded(false)}
+                        onClick={()=>setIsExpanded()}
                         >
                             Search
                         </Button>
