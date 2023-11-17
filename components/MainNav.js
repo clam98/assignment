@@ -11,7 +11,7 @@ export default function MainNav(){
     const router = useRouter();
     const [isExpanded, setIsExpanded] = useState(false)
     const [searchHistory, setSearchHistory] = useAtom(searchHistoryAtom)
-
+    console.log(searchHistory)
     const search = (e) => {
         e.preventDefault(); 
         const searchField = e.target.elements.search.value;
