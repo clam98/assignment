@@ -67,7 +67,7 @@ export default function MainNav(){
                           <Link href="/favourites" passHref legacyBehavior>
                             <NavDropdown.Item 
                               active={router.pathname === "/favourites"}
-                              onClick={()=>setIsExpanded(!isExpanded)}>
+                              onClick={()=>setIsExpanded(false)}>
                                 Favourites
                               </NavDropdown.Item>
                           </Link>
@@ -75,7 +75,7 @@ export default function MainNav(){
                           <Link href="/history" passHref legacyBehavior>
                             <NavDropdown.Item 
                               active={router.pathname === "/history"}
-                              onClick={()=>setIsExpanded(!isExpanded)}>
+                              onClick={()=>setIsExpanded(false)}>
                                 History
                               </NavDropdown.Item>
                           </Link>
