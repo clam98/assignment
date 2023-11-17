@@ -6,7 +6,6 @@
 *  (including web sites) or distributed to other students.
 * 
 *  Name: Carmen Student ID: 129950226 Date: Nov 17, 2023
-*  https://splendid-starlight-6693c5.netlify.app/
 *
 ********************************************************************************/ 
 import useSWR from "swr";
