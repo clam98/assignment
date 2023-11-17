@@ -36,6 +36,7 @@ export default function MainNav(){
                   <Nav className="me-auto">
                         <Nav.Link href="/" passHref legacyBehavior
                             onClick={()=>setIsExpanded(false)}
+                      
                             
                             active={router.pathname === "/"}
                         >
