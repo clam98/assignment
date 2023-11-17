@@ -56,7 +56,7 @@ export default function MainNav(){
                         aria-label="Search"
                         />
                         <Button variant="outline-success" type="submit" 
-                        onClick={()=>setIsExpanded(!isExpanded)}
+                        onClick={()=>setIsExpanded(false)}
                         >
                             Search
                         </Button>
