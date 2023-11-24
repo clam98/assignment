@@ -6,6 +6,8 @@ import { favouritesAtom } from "@/store";
 import { useAtom } from "jotai";
 import { useState } from "react";
 import { useEffect } from "react";
+import { addToFavourites } from "@/lib/userData";
+import { removeFromFavourites } from "@/lib/userData";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
@@ -16,9 +18,9 @@ export default function ArtworkCardDetail({objectID}){
 
     const favouritesClicked= async() =>{
         if(showAdded){
-            setFavouritesList(current => current.filter(fav => fav != objectID));
+            setFavouritesList(await removeFromFavourites(objectID));
         }else{
-            setFavouritesList(current => [...current, objectID]);
+            setFavouritesList(await addToFavourites(objectID));
         }
 
         setShowAdded(!showAdded)
@@ -28,12 +30,10 @@ export default function ArtworkCardDetail({objectID}){
       `https://collectionapi.metmuseum.org/public/collection/v1/objects/${objectID}`,
       fetcher);
 
-    useEffect(() => {
-        console.log(favouritesList)
-      })
-      if (error) {
-        return <Error statusCode={404} />
-      }
+
+    useEffect(()=>{
+        setShowAdded(favouritesList?.includes(objectID))
+    },[favouritesList])
 
     if(data){
         return(
