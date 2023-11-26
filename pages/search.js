@@ -5,6 +5,7 @@ import { Button } from "react-bootstrap";
 import { searchHistoryAtom } from "@/store";
 import { useAtom } from "jotai";
 import styles from '@/styles/History.module.css'
+import { addToHistory } from "@/lib/userData";
 
 export default function Search(){
     const router = useRouter();
@@ -27,7 +28,7 @@ export default function Search(){
         queryString += `&isHighlight=${data.isHighlight}`;
         queryString += `&q=${data.q}`;
 
-		setSearchHistory(current => [...current, queryString]);
+		setSearchHistory(await addToHistory(queryString)) 
         
 		router.push(`/artwork?${queryString}`)
 	}
