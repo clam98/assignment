@@ -16,11 +16,10 @@ export default function Register(props){
     e.preventDefault();
     try {
       await registerUser(user, password, password2);
-      router.push({ pathname: "/login", query: { registered: true } }, "/login")
+      //router.push({ pathname: "/login", query: { registered: true } }, "/login")
     } catch (err) {
       setWarning(err.message);
     }
-
   }
   return (
     <>
