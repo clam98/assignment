@@ -16,7 +16,7 @@ export default function Register(props){
     e.preventDefault();
     try {
       await registerUser(user, password, password2);
-      //router.push({ pathname: "/login", query: { registered: true } }, "/login")
+      router.push({ pathname: "/login", query: { registered: true } }, "/login")
     } catch (err) {
       setWarning(err.message);
     }
@@ -30,16 +30,16 @@ export default function Register(props){
       <Form onSubmit={handleSubmit}>
         <Form.Group>
           <Form.Label>User:</Form.Label>
-          <Form.Control type="text" value={user} id="userName" name="userName" onChange={e => setUser(e.target.value)} />
+          <Form.Control type="text" value={user} id="userName" name="userName" onChange={(e) => setUser(e.target.value)} />
         </Form.Group>
         <br />
         <Form.Group>
           <Form.Label>Password:</Form.Label>
-          <Form.Control type="password" value={password} id="password" name="password" onChange={e => setPassword(e.target.value)} />
+          <Form.Control type="password" value={password} id="password" name="password" onChange={(e) => setPassword(e.target.value)} />
         </Form.Group>
         <Form.Group>
             <Form.Label>Confirm Password</Form.Label>
-            <Form.Control type="password2" value={password2} id="password2" name="password2" onChange={e=>setPassword2(e.target.value)}/>
+            <Form.Control type="password2" value={password2} id="password2" name="password2" onChange={(e)=>setPassword2(e.target.value)}/>
         </Form.Group>
         <br />
         <Button variant="primary" className="pull-right" type="submit">Register</Button>
