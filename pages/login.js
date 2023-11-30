@@ -6,6 +6,7 @@ import { favouritesAtom } from "@/store";
 import { searchHistoryAtom } from "@/store";
 import { getHistory } from "@/lib/userData";
 import { getFavourites } from "@/lib/userData";
+import { useAtom } from "jotai";
 
 
 export default function Login(props){
@@ -13,6 +14,8 @@ export default function Login(props){
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
   const [warning, setWarning] = useState('');
+  const [favouritesList, setFavouritesList] = useAtom(favouritesAtom)
+  const [searchHistory, setSearchHistory] = useAtom(searchHistoryAtom)
   const router = useRouter();
 
   async function updateAtoms(){
