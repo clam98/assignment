@@ -20,14 +20,14 @@ export default function MainNav(){
     let token = readToken();
 
     function logout() {
-      removeToken();
-      router.push('/login');
+      setIsExpanded(false)
+      removeToken()
+      router.push("/login")
     }
 
     const search = async (e) => {
         e.preventDefault(); 
         const searchField = e.target.elements.search.value;
-        let queryString = `title=true&q=${searchField}`
         setSearchHistory(await addToHistory(`title=true&q=${searchField}`)) 
         router.push(`/artwork?title=true&q=${searchField}`);
     };
@@ -108,6 +108,11 @@ export default function MainNav(){
                             onClick={()=>setIsExpanded(false)}>
                               History
                             </NavDropdown.Item>
+                        </Link>
+                        <Link href="" passHref legacyBehavior>
+                          <NavDropdown.Item onClick={() => logout()}>
+                            Logout
+                          </NavDropdown.Item>
                         </Link>
 
                       </NavDropdown>

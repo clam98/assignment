@@ -16,6 +16,15 @@ export default function ArtworkCardDetail({objectID}){
     const [favouritesList, setFavouritesList]= useAtom(favouritesAtom)
     const [showAdded, setShowAdded]= useState(false)
 
+    const { data, error } = useSWR(
+        `https://collectionapi.metmuseum.org/public/collection/v1/objects/${objectID}`,
+        fetcher);
+  
+  
+      useEffect(()=>{
+          setShowAdded(favouritesList?.includes(objectID))
+      },[favouritesList])
+
     const favouritesClicked= async() =>{
         if(showAdded){
             setFavouritesList(await removeFromFavourites(objectID));
@@ -26,14 +35,7 @@ export default function ArtworkCardDetail({objectID}){
         setShowAdded(!showAdded)
     }
 
-    const { data, error } = useSWR(
-      `https://collectionapi.metmuseum.org/public/collection/v1/objects/${objectID}`,
-      fetcher);
-
-
-    useEffect(()=>{
-        setShowAdded(favouritesList?.includes(objectID))
-    },[favouritesList])
+    
 
     if(data){
         return(
